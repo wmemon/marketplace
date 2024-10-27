@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Heart, Mail, Instagram, Twitter } from 'lucide-react';
+import { Heart, Mail, Instagram, Twitter, ChevronRight } from 'lucide-react';
 import Logo from "@/public/assets/logo.png";
 import Category from "@/public/assets/category.png";
 
@@ -39,14 +39,17 @@ export default function MarketplaceLayout() {
           <div className="flex space-x-4 md:grid md:grid-cols-4 md:gap-4 lg:grid-cols-12">
             {categories.map((category, index) => (
               <div key={index} className="flex flex-col items-center flex-shrink-0">
-                <span className="text-xs text-center">{category.name}</span>
+                <span className="text-xs font-semibold text-center">{category.name}</span>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">Top rated experiences</h2>
+        <section className="mb-8 pt-14">
+          <div className='flex mb-4 align-bottom'>
+            <h2 className="text-2xl font-semibold ">Top rated experiences</h2>
+            <h2 className='text-md ml-auto mr-20 font-semibold flex'>View All <ChevronRight/>  </h2>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {products.map((product, index) => (
               <div key={index} className='flex flex-col'>
@@ -71,7 +74,10 @@ export default function MarketplaceLayout() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">Top picks to explore</h2>
+        <div className='flex mb-4 align-bottom'>
+            <h2 className="text-2xl font-semibold ">Top rated experiences</h2>
+            <h2 className='text-md ml-auto mr-20 font-semibold flex'>View All <ChevronRight/> </h2>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {products.map((product, index) => (
               <div key={index} className='flex flex-col'>
@@ -97,7 +103,10 @@ export default function MarketplaceLayout() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">Popular in your area</h2>
+        <div className='flex mb-4 align-bottom'>
+            <h2 className="text-2xl font-semibold ">Top rated experiences</h2>
+            <h2 className='text-md ml-auto mr-20 font-semibold flex'>View All <ChevronRight/>  </h2>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {products.map((product, index) => (
               <div key={index} className='flex flex-col'>
