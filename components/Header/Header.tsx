@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 
 export default function Header() {
   return (
-    <header className="border-b">
-      <div className="container mx-auto px-4 py-4 flex flex-col lg:flex-row items-center justify-between">
-        <Link href="/" className="text-2xl font-bold text-blue-600">
-          ●
+    <header className="mb-5 shadow-[0_4px_10px_-2px_rgba(0,0,0,0.1)] border-b">
+      <div className="pl-14 container mx-auto px-4 py-4 flex flex-col lg:flex-row items-center justify-between">
+        <Link href="/" className=" text-2xl font-bold text-blue-600">
+          ● 
         </Link>{" "}
         <div className="flex border rounded-full p-2 mb-4 lg:mb-0 space-x-10 px-10 text-gray-500">
           <text>What</text>

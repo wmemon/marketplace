@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { MessageCircle, Heart, Bell, User, Mail, Instagram, Twitter } from 'lucide-react'
+import { Input } from "@/components/ui/input"
+import { MessageCircle, Heart, Bell, User, Search, Home, PlusSquare, MessageSquare, Mail, Instagram, Twitter } from 'lucide-react'
 
 const categories = [
   { name: 'Automobiles', icon: '/placeholder.svg?height=50&width=50' },
@@ -28,13 +30,13 @@ const products = [
 
 export default function MarketplaceLayout() {
   return (
-    <div className="min-h-screen bg-white ml-14">
+    <div className="min-h-screen bg-white pl-14">
 
       <main className="container mx-auto px-4 py-8">
-        <section className="mb-12">
-          <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-4">
+        <section className="mb-8 overflow-x-auto">
+          <div className="flex space-x-4 md:grid md:grid-cols-4 md:gap-4 lg:grid-cols-12">
             {categories.map((category, index) => (
-              <div key={index} className="flex flex-col items-center">
+              <div key={index} className="flex flex-col items-center flex-shrink-0">
                 <Image src={category.icon} alt={category.name} width={50} height={50} className="mb-2" />
                 <span className="text-xs text-center">{category.name}</span>
               </div>
@@ -42,67 +44,91 @@ export default function MarketplaceLayout() {
           </div>
         </section>
 
-        <section className="mb-12">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold">Top rated experiences</h2>
-            <Link href="/" className="text-blue-600 hover:underline">View all</Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <section className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Top rated experiences</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {products.map((product, index) => (
+              <div key={index} className='flex flex-col'>
               <Card key={index}>
-                <CardContent className="p-0">
-                  <Image src={product.image} alt={product.title} width={200} height={200} className="w-full h-48 object-cover" />
-                  <div className="p-4">
-                    <h3 className="font-semibold">{product.title}</h3>
-                    <p className="text-sm text-gray-600">{product.location}</p>
-                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-normal">per day</span></p>
+                <CardContent className="p-0 h-80">
+                  <div className="relative">
+                    <Image src={product.image} alt={product.title} width={200} height={200} className="w-full h-40 object-cover" />
+                    <Button variant="ghost" size="icon" className="absolute top-2 right-2 bg-white rounded-full">
+                      <Heart className="h-4 w-4" />
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
+              <div className="p-4">
+                    <p className="font-semibold text-sm">{product.title}</p>
+                    <p className="text-sm text-gray-600">{product.location}</p>
+                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-thin text-gray-500">per day</span></p>
+                  </div>
+              </div>
             ))}
           </div>
         </section>
 
-        <section className="mb-12">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold">Top picks to explore</h2>
-            <Link href="/" className="text-blue-600 hover:underline">View all</Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <section className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Top picks to explore</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {products.map((product, index) => (
+              <div key={index} className='flex flex-col'>
               <Card key={index}>
-                <CardContent className="p-0">
-                  <Image src={product.image} alt={product.title} width={200} height={200} className="w-full h-48 object-cover" />
-                  <div className="p-4">
-                    <h3 className="font-semibold">{product.title}</h3>
-                    <p className="text-sm text-gray-600">{product.location}</p>
-                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-normal">per day</span></p>
+                <CardContent className="p-0 h-80">
+                  <div className="relative">
+                    <Image src={product.image} alt={product.title} width={200} height={200} className="w-full h-40 object-cover" />
+                    <Button variant="ghost" size="icon" className="absolute top-2 right-2 bg-white rounded-full">
+                      <Heart className="h-4 w-4" />
+                    </Button>
                   </div>
+                  
                 </CardContent>
               </Card>
+              <div className="p-4">
+                    <h3 className="font-semibold text-sm">{product.title}</h3>
+                    <p className="text-xs text-gray-600">{product.location}</p>
+                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-normal">per day</span></p>
+                  </div>
+              </div>
             ))}
           </div>
         </section>
 
-        <section className="mb-12">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold">Popular in your area</h2>
-            <Link href="/" className="text-blue-600 hover:underline">View all</Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {products.map((product, index) => (
+        <section className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Popular in your area</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {products.map((product, index) => (
+              <div key={index} className='flex flex-col'>
               <Card key={index}>
-                <CardContent className="p-0">
-                  <Image src={product.image} alt={product.title} width={200} height={200} className="w-full h-48 object-cover" />
-                  <div className="p-4">
-                    <h3 className="font-semibold">{product.title}</h3>
-                    <p className="text-sm text-gray-600">{product.location}</p>
-                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-normal">per day</span></p>
+                <CardContent className="p-0 h-80">
+                  <div className="relative">
+                    <Image src={product.image} alt={product.title} width={200} height={200} className="w-full h-40 object-cover" />
+                    <Button variant="ghost" size="icon" className="absolute top-2 right-2 bg-white rounded-full">
+                      <Heart className="h-4 w-4" />
+                    </Button>
                   </div>
+                  
                 </CardContent>
               </Card>
+              <div className="p-4">
+                    <h3 className="font-semibold text-sm">{product.title}</h3>
+                    <p className="text-xs text-gray-600">{product.location}</p>
+                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-normal">per day</span></p>
+                  </div>
+              </div>
             ))}
           </div>
+        </section>
+
+        <section className="mb-8 md:hidden">
+          <Card>
+            <CardContent className="p-4">
+              <h3 className="font-semibold mb-2">Don't see what you need?</h3>
+              <p className="text-sm text-gray-600 mb-4">Request a product & we'll do our best to get it on Renil for you!</p>
+              <Button className="w-full">Unavailability form</Button>
+            </CardContent>
+          </Card>
         </section>
       </main>
 
