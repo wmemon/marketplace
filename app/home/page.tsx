@@ -188,16 +188,17 @@ export default function MarketplaceLayout() {
   )
 }
 
-function CategoryItem({ category }: {category: {icon: StaticImageData, name: string}}) {
-  return (
-    <div className="flex flex-col items-center flex-shrink-0">
-      <Image src={category.icon} width={100} height={100} alt={`${category.name} icon`} />
-      <span className="text-xs font-semibold text-center mt-2">
-        {category.name}
-      </span>
-    </div>
-  )
-}
+function CategoryItem({ category }: { category: { icon: StaticImageData, name: string } }) {
+    return (
+      <div className="flex flex-col items-center flex-shrink-0 h-28 justify-between">
+        <Image src={category.icon} width={100} height={100} alt={`${category.name} icon`} />
+        <span className="text-xs font-semibold text-center mt-2 whitespace-nowrap truncate">
+          {category.name}
+        </span>
+      </div>
+    )
+  }
+  
 
 function useMediaQuery(query: string) {
   const [matches, setMatches] = React.useState(false)
