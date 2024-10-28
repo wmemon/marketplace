@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, ChevronRight } from "lucide-react";
-import Category from "@/public/assets/category.png";
 import Rocket from "@/public/assets/rocket.png";
 import Automobile from "@/public/assets/headers/automobile.png";
 import Electonics from "@/public/assets/headers/electronics.png";
@@ -133,7 +132,7 @@ export default function MarketplaceLayout() {
     <div className="min-h-screen bg-white sm:pl-14 px-2">
       <main className="container mx-auto px-4 py-8">
         <section className="mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             {isMobile ? (
               <>
                 <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
@@ -148,7 +147,7 @@ export default function MarketplaceLayout() {
                 </div>
               </>
             ) : (
-              <div className="col-span-2 grid grid-cols-6 gap-4">
+              <div className="flex space-x-4 overflow-x-auto">
                 {categories.map((category, index) => (
                   <CategoryItem key={index} category={category} />
                 ))}
@@ -189,7 +188,7 @@ export default function MarketplaceLayout() {
   )
 }
 
-function CategoryItem({ category }) {
+function CategoryItem({ category }: {category: {icon: StaticImageData, name: string}}) {
   return (
     <div className="flex flex-col items-center flex-shrink-0">
       <Image src={category.icon} width={100} height={100} alt={`${category.name} icon`} />
@@ -200,7 +199,7 @@ function CategoryItem({ category }) {
   )
 }
 
-function useMediaQuery(query) {
+function useMediaQuery(query: string) {
   const [matches, setMatches] = React.useState(false)
 
   React.useEffect(() => {
