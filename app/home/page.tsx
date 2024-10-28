@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,6 +18,7 @@ import Sports from "@/public/assets/headers/sports.png";
 import Musicals from "@/public/assets/headers/musicals.png";
 import Emerging from "@/public/assets/headers/emerging.png";
 import Books from "@/public/assets/headers/books.png";
+import React from "react";
 
 const categories = [
   { name: "Automobiles", icon: Automobile },
@@ -124,45 +127,41 @@ function ProductCardsContainer({ title }: { title: string }) {
 }
 
 export default function MarketplaceLayout() {
+  const isMobile = useMediaQuery('(max-width: 767px)')
+
   return (
     <div className="min-h-screen bg-white sm:pl-14 px-2">
       <main className="container mx-auto px-4 py-8">
         <section className="mb-8">
-          <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
-            <div className="flex space-x-4 md:grid md:grid-cols-3 md:gap-4 overflow-x-auto scrollbar-hide">
-              {categories.slice(0, 6).map((category, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center flex-shrink-0"
-                >
-                  <Image src={category.icon} width={100} height={100} alt="Icon" />
-                  <span className="text-xs font-semibold text-center">
-                    {category.name}
-                  </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {isMobile ? (
+              <>
+                <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
+                  {categories.slice(0, 6).map((category, index) => (
+                    <CategoryItem key={index} category={category} />
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div className="flex space-x-4 md:grid md:grid-cols-3 md:gap-4 overflow-x-auto scrollbar-hide">
-              {categories.slice(6).map((category, index) => (
-                <div
-                  key={index + 6}
-                  className="flex flex-col items-center flex-shrink-0"
-                >
-                  <Image src={category.icon} width={100} height={100} alt="Icon" />
-                  <span className="text-xs font-semibold text-center">
-                    {category.name}
-                  </span>
+                <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
+                  {categories.slice(6).map((category, index) => (
+                    <CategoryItem key={index + 6} category={category} />
+                  ))}
                 </div>
-              ))}
-            </div>
+              </>
+            ) : (
+              <div className="col-span-2 grid grid-cols-6 gap-4">
+                {categories.map((category, index) => (
+                  <CategoryItem key={index} category={category} />
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
         <div className="pt-14">
-          <ProductCardsContainer title={"Top rated experiences"} />
+          <ProductCardsContainer title="Top rated experiences" />
         </div>
-        <ProductCardsContainer title={"Top picks to explore"} />
-        <ProductCardsContainer title={"Popular near me"} />
+        <ProductCardsContainer title="Top picks to explore" />
+        <ProductCardsContainer title="Popular near me" />
 
         <section className="mb-8 md:hidden w-full">
           <div className="bg-[#EDEDFC] rounded-xl p-4 flex flex-col items-start w-full">
@@ -174,18 +173,45 @@ export default function MarketplaceLayout() {
                 <h3 className="font-semibold text-black ml-2">
                   Don&apos;t see what you need?
                 </h3>
-                <p className="text-sm  text-gray-800 mb-4 ml-2">
+                <p className="text-sm text-gray-800 mb-4 ml-2">
                   Request a product & we&apos;ll do our best to get it on Renit
                   for you!
                 </p>
               </div>
             </div>
-            <Button className="w-full bg-[#645AE8] hover:[#645AE8] text-white">
-              Unavailability form <ChevronRight />
+            <Button className="w-full bg-[#645AE8] hover:bg-[#5449d6] text-white">
+              Unavailability form <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </section>
       </main>
     </div>
-  );
+  )
+}
+
+function CategoryItem({ category }) {
+  return (
+    <div className="flex flex-col items-center flex-shrink-0">
+      <Image src={category.icon} width={100} height={100} alt={`${category.name} icon`} />
+      <span className="text-xs font-semibold text-center mt-2">
+        {category.name}
+      </span>
+    </div>
+  )
+}
+
+function useMediaQuery(query) {
+  const [matches, setMatches] = React.useState(false)
+
+  React.useEffect(() => {
+    const media = window.matchMedia(query)
+    if (media.matches !== matches) {
+      setMatches(media.matches)
+    }
+    const listener = () => setMatches(media.matches)
+    media.addListener(listener)
+    return () => media.removeListener(listener)
+  }, [matches, query])
+
+  return matches
 }
