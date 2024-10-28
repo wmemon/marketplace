@@ -1,9 +1,7 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Heart, Mail, Instagram, Twitter, ChevronRight } from 'lucide-react';
-import Logo from "@/public/assets/logo.png";
+import { Heart, ChevronRight } from 'lucide-react';
 import Category from "@/public/assets/category.png";
 
 const categories = [
@@ -31,10 +29,11 @@ const products = [
 
 export default function MarketplaceLayout() {
   return (
-    <div className="min-h-screen bg-white pl-14">
+    <div className="min-h-screen bg-white sm:pl-14 px-7">
 
       <main className="container mx-auto px-4 py-8">
-        <section className="mb-8 overflow-x-auto">
+        <section className="mb-8 overflow-x-auto sm:grid">
+        <div className='flex flex-col'>
         <Image src={Category} alt='Category'/>
           <div className="flex space-x-4 md:grid md:grid-cols-4 md:gap-4 lg:grid-cols-12">
             {categories.map((category, index) => (
@@ -43,16 +42,18 @@ export default function MarketplaceLayout() {
               </div>
             ))}
           </div>
+        </div>
         </section>
+
 
         <section className="mb-8 pt-14">
           <div className='flex mb-4 align-bottom'>
-            <h2 className="text-2xl font-semibold ">Top rated experiences</h2>
-            <h2 className='text-md ml-auto mr-20 font-semibold flex'>View All <ChevronRight/>  </h2>
+            <h2 className="md:text-2xl font-semibold ">Top rated experiences</h2>
+            <h2 className='text-md ml-auto mr-20 font-semibold hidden sm:flex'>View All <ChevronRight/>  </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="flex overflow-x-scroll md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
             {products.map((product, index) => (
-              <div key={index} className='flex flex-col'>
+              <div key={index} className='flex flex-col min-w-[50%]'>
               <Card key={index}>
                 <CardContent className="p-0 h-80">
                   <div className="relative">
@@ -75,27 +76,26 @@ export default function MarketplaceLayout() {
 
         <section className="mb-8">
         <div className='flex mb-4 align-bottom'>
-            <h2 className="text-2xl font-semibold ">Top rated experiences</h2>
-            <h2 className='text-md ml-auto mr-20 font-semibold flex'>View All <ChevronRight/> </h2>
+            <h2 className="md:text-2xl font-semibold ">Top picks to explore</h2>
+            <h2 className='text-md ml-auto mr-20 font-semibold hidden sm:flex'>View All <ChevronRight/>  </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="flex overflow-x-scroll md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
             {products.map((product, index) => (
-              <div key={index} className='flex flex-col'>
+              <div key={index} className='flex flex-col min-w-[50%]'>
               <Card key={index}>
                 <CardContent className="p-0 h-80">
                   <div className="relative">
-                    <Image src={product.image} alt={product.title} width={200} height={200} className="w-full h-80 rounded-xl object-cover" />
+                    <Image src={product.image} alt={product.title} width={200} height={200} className="h-80 rounded-xl w-full object-cover" />
                     <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-white rounded-full">
                       <Heart className="h-4 w-4" />
                     </Button>
                   </div>
-                  
                 </CardContent>
               </Card>
               <div className="p-4">
-                    <h3 className="font-semibold text-sm">{product.title}</h3>
-                    <p className="text-xs text-gray-600">{product.location}</p>
-                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-normal">per day</span></p>
+                    <p className="font-semibold text-sm">{product.title}</p>
+                    <p className="text-sm text-gray-600">{product.location}</p>
+                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-thin text-gray-500">per day</span></p>
                   </div>
               </div>
             ))}
@@ -104,27 +104,26 @@ export default function MarketplaceLayout() {
 
         <section className="mb-8">
         <div className='flex mb-4 align-bottom'>
-            <h2 className="text-2xl font-semibold ">Top rated experiences</h2>
-            <h2 className='text-md ml-auto mr-20 font-semibold flex'>View All <ChevronRight/>  </h2>
+            <h2 className="md:text-2xl font-semibold ">Popular near you</h2>
+            <h2 className='text-md ml-auto mr-20 font-semibold hidden sm:flex'>View All <ChevronRight/>  </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {products.map((product, index) => (
-              <div key={index} className='flex flex-col'>
+          <div className="flex overflow-x-scroll md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {products.map((product, index) => (
+              <div key={index} className='flex flex-col min-w-[50%]'>
               <Card key={index}>
                 <CardContent className="p-0 h-80">
                   <div className="relative">
-                    <Image src={product.image} alt={product.title} width={200} height={200} className="w-full h-80 rounded-xl object-cover" />
+                    <Image src={product.image} alt={product.title} width={200} height={200} className="h-80 rounded-xl w-full object-cover" />
                     <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-white rounded-full">
                       <Heart className="h-4 w-4" />
                     </Button>
                   </div>
-                  
                 </CardContent>
               </Card>
               <div className="p-4">
-                    <h3 className="font-semibold text-sm">{product.title}</h3>
-                    <p className="text-xs text-gray-600">{product.location}</p>
-                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-normal">per day</span></p>
+                    <p className="font-semibold text-sm">{product.title}</p>
+                    <p className="text-sm text-gray-600">{product.location}</p>
+                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-thin text-gray-500">per day</span></p>
                   </div>
               </div>
             ))}
@@ -132,48 +131,18 @@ export default function MarketplaceLayout() {
         </section>
 
         <section className="mb-8 md:hidden">
-          <Card>
-            <CardContent className="p-4">
-              <h3 className="font-semibold mb-2">Don&apos;t see what you need?</h3>
-              <p className="text-sm text-gray-600 mb-4">Request a product & we&apos;ll do our best to get it on Renit for you!</p>
-              <Button className="w-full">Unavailability form</Button>
-            </CardContent>
-          </Card>
+          <div className="bg-[#EDEDFC] rounded-xl p-4 flex flex-col items-start">
+            <div className="flex items-center mb-2">
+              <svg className="w-5 h-5 text-black mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" />
+              </svg>
+              <h3 className="font-semibold text-black">Don&apos;t see what you need?</h3>
+            </div>
+            <p className="text-sm text-black mb-4">Request a product & we&apos;ll do our best to get it on Renit for you!</p>
+            <Button className="w-full bg-[#645AE8] hover:[#645AE8] text-white">Unavailability form</Button>
+          </div>
         </section>
       </main>
-
-      <footer className="bg-gray-100 border-t -ml-14 pl-14 py-8">
-        <div className="container px-4 py-12">
-          <div className="flex flex-col md:flex-row justify-between items-start">
-            <div className="mb-4 md:mb-0 -mt-2">
-              <Link href="/" className="text-2xl text-black font-thin flex items-center">
-              <Image src={Logo} alt='Logo' className='h-12 w-14 -ml-3'/>
-                Renit
-              </Link>
-              <p className="text-sm text-gray-600 mt-2">The marketplace where you <br/> can rent the best stuff.</p>
-              <p className="text-sm font-thin text-gray-400 mt-4">© 2024 Renit. All rights reserved.</p>
-            </div>
-            <div className="flex space-x-12 mr-80">
-              <div>
-                <h3 className="font-semibold mb-2">Company</h3>
-                <ul className="space-y-2">
-                  <li><Link href="/" className="text-sm text-gray-600 hover:text-gray-900">₹ INR</Link></li>
-                  <li><Link href="/" className="text-sm text-gray-600 hover:text-gray-900">Terms & Conditions</Link></li>
-                  <li><Link href="/" className="text-sm text-gray-600 hover:text-gray-900">Privacy Policy</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Socials</h3>
-                <ul className="space-y-2">
-                  <li><Link href="/" className="text-sm text-gray-600 hover:text-gray-900 flex items-center"><Mail className="w-4 h-4 mr-2" /> Email</Link></li>
-                  <li><Link href="/" className="text-sm text-gray-600 hover:text-gray-900 flex items-center"><Instagram className="w-4 h-4 mr-2" /> Instagram</Link></li>
-                  <li><Link href="/" className="text-sm text-gray-600 hover:text-gray-900 flex items-center"><Twitter className="w-4 h-4 mr-2" /> X</Link></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
