@@ -4,20 +4,33 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Heart, ChevronRight } from 'lucide-react';
 import Category from "@/public/assets/category.png";
 import Rocket from "@/public/assets/rocket.png"
+import Automobile from "@/public/assets/headers/automobile.png";
+import Electonics from "@/public/assets/headers/electronics.png";
+import Machines from "@/public/assets/headers/machines.png";
+import Fashion from "@/public/assets/headers/fashion.png";
+import Art from "@/public/assets/headers/art.png"
+import RealEstate from "@/public/assets/headers/realestate.png";
+import Appliances from "@/public/assets/headers/appliances.png";
+import Furniture from "@/public/assets/headers/furniture.png";
+import Sports from "@/public/assets/headers/sports.png";
+import Musicals from "@/public/assets/headers/musicals.png";
+import Emerging from "@/public/assets/headers/emerging.png";
+import Books from "@/public/assets/headers/books.png";
+
 
 const categories = [
-  { name: 'Automobiles', icon: '' },
-  { name: 'Electronics', icon: '/placeholder.svg?height=50&width=50' },
-  { name: 'Machines', icon: '/placeholder.svg?height=50&width=50' },
-  { name: 'Fashion', icon: '/placeholder.svg?height=50&width=50' },
-  { name: 'Art & Craft', icon: '/placeholder.svg?height=50&width=50' },
-  { name: 'Real Estate', icon: '/placeholder.svg?height=50&width=50' },
-  { name: 'Appliances', icon: '/placeholder.svg?height=50&width=50' },
-  { name: 'Furniture', icon: '/placeholder.svg?height=50&width=50' },
-  { name: 'Sports', icon: '/placeholder.svg?height=50&width=50' },
-  { name: 'Musicals', icon: '/placeholder.svg?height=50&width=50' },
-  { name: 'Emerging', icon: '/placeholder.svg?height=50&width=50' },
-  { name: 'Books', icon: '/placeholder.svg?height=50&width=50' },
+  { name: 'Automobiles', icon: Automobile },
+  { name: 'Electronics', icon: Electonics },
+  { name: 'Machines', icon: Machines },
+  { name: 'Fashion', icon: Fashion },
+  { name: 'Art & Craft', icon: Art },
+  { name: 'Real Estate', icon: RealEstate },
+  { name: 'Appliances', icon: Appliances },
+  { name: 'Furniture', icon: Furniture },
+  { name: 'Sports', icon: Sports },
+  { name: 'Musicals', icon: Musicals },
+  { name: 'Emerging', icon: Emerging },
+  { name: 'Books', icon: Books },
 ]
 
 const products = [
@@ -72,6 +85,7 @@ export default function MarketplaceLayout() {
           <div className="flex space-x-4 md:grid md:grid-cols-4 md:gap-4 lg:grid-cols-12">
             {categories.map((category, index) => (
               <div key={index} className="flex flex-col items-center flex-shrink-0">
+                {/* <Image src={category.icon} width={100} height={100} alt="Icon" /> */}
                 <span className="text-xs font-semibold text-center">{category.name}</span>
               </div>
             ))}
