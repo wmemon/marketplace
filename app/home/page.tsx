@@ -99,6 +99,12 @@ function ProductCardsContainer({ title }: { title: string }) {
                   >
                     <Heart className="h-4 w-4" />
                   </Button>
+                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    <div className="w-1.5 h-1.5 bg-gray-200 rounded-full"></div>
+                    <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                    <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                    <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -121,36 +127,36 @@ export default function MarketplaceLayout() {
   return (
     <div className="min-h-screen bg-white sm:pl-14 px-2">
       <main className="container mx-auto px-4 py-8">
-      <section className="mb-8">
-  <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
-    <div className="flex space-x-4 md:grid md:grid-cols-3 md:gap-4 overflow-x-auto scrollbar-hide">
-      {categories.slice(0, 6).map((category, index) => (
-        <div
-          key={index}
-          className="flex flex-col items-center flex-shrink-0"
-        >
-          <Image src={category.icon} width={100} height={100} alt="Icon" />
-          <span className="text-xs font-semibold text-center">
-            {category.name}
-          </span>
-        </div>
-      ))}
-    </div>
-    <div className="flex space-x-4 md:grid md:grid-cols-3 md:gap-4 overflow-x-auto scrollbar-hide">
-      {categories.slice(6).map((category, index) => (
-        <div
-          key={index + 6}
-          className="flex flex-col items-center flex-shrink-0"
-        >
-          <Image src={category.icon} width={100} height={100} alt="Icon" />
-          <span className="text-xs font-semibold text-center">
-            {category.name}
-          </span>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+        <section className="mb-8">
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
+            <div className="flex space-x-4 md:grid md:grid-cols-3 md:gap-4 overflow-x-auto scrollbar-hide">
+              {categories.slice(0, 6).map((category, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center flex-shrink-0"
+                >
+                  <Image src={category.icon} width={100} height={100} alt="Icon" />
+                  <span className="text-xs font-semibold text-center">
+                    {category.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="flex space-x-4 md:grid md:grid-cols-3 md:gap-4 overflow-x-auto scrollbar-hide">
+              {categories.slice(6).map((category, index) => (
+                <div
+                  key={index + 6}
+                  className="flex flex-col items-center flex-shrink-0"
+                >
+                  <Image src={category.icon} width={100} height={100} alt="Icon" />
+                  <span className="text-xs font-semibold text-center">
+                    {category.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <div className="pt-14">
           <ProductCardsContainer title={"Top rated experiences"} />
