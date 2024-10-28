@@ -27,6 +27,39 @@ const products = [
   { title: 'Hero Xpulse 200T', location: 'Goregaon, Mumbai', price: '₹1990', image: 'https://www.giva.co/cdn/shop/products/ML_queens_necklace_img1.jpg?v=1632552308&width=1445' },
 ]
 
+function ProductCardsContainer({title}){
+    return (
+        <section className="mb-8">
+          <div className='flex mb-4 align-bottom'>
+            <h2 className="md:text-2xl font-semibold ">{title}</h2>
+            <h2 className='text-md ml-auto mr-20 font-semibold hidden sm:flex'>View All <ChevronRight/>  </h2>
+          </div>
+          <div className="flex overflow-x-scroll md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {products.map((product, index) => (
+              <div key={index} className='flex flex-col min-w-[50%]'>
+              <Card key={index}>
+                <CardContent className="p-0 h-60 sm:h-80">
+                  <div className="relative">
+                    <Image src={product.image} alt={product.title} width={200} height={200} className="sm:h-80 h-60 rounded-xl w-full object-cover" />
+                    <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-white rounded-full">
+                      <Heart className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+              <div className="p-4">
+                    <p className="font-semibold text-sm">{product.title}</p>
+                    <p className="text-sm text-gray-600">{product.location}</p>
+                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-thin text-gray-500">per day</span></p>
+                  </div>
+              </div>
+            ))}
+          </div>
+        </section>
+    )
+}
+
+
 export default function MarketplaceLayout() {
   return (
     <div className="min-h-screen bg-white sm:pl-14 px-7">
@@ -45,90 +78,11 @@ export default function MarketplaceLayout() {
         </div>
         </section>
 
-
-        <section className="mb-8 pt-14">
-          <div className='flex mb-4 align-bottom'>
-            <h2 className="md:text-2xl font-semibold ">Top rated experiences</h2>
-            <h2 className='text-md ml-auto mr-20 font-semibold hidden sm:flex'>View All <ChevronRight/>  </h2>
-          </div>
-          <div className="flex overflow-x-scroll md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {products.map((product, index) => (
-              <div key={index} className='flex flex-col min-w-[50%]'>
-              <Card key={index}>
-                <CardContent className="p-0 h-80">
-                  <div className="relative">
-                    <Image src={product.image} alt={product.title} width={200} height={200} className="h-80 rounded-xl w-full object-cover" />
-                    <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-white rounded-full">
-                      <Heart className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-              <div className="p-4">
-                    <p className="font-semibold text-sm">{product.title}</p>
-                    <p className="text-sm text-gray-600">{product.location}</p>
-                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-thin text-gray-500">per day</span></p>
-                  </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-8">
-        <div className='flex mb-4 align-bottom'>
-            <h2 className="md:text-2xl font-semibold ">Top picks to explore</h2>
-            <h2 className='text-md ml-auto mr-20 font-semibold hidden sm:flex'>View All <ChevronRight/>  </h2>
-          </div>
-          <div className="flex overflow-x-scroll md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {products.map((product, index) => (
-              <div key={index} className='flex flex-col min-w-[50%]'>
-              <Card key={index}>
-                <CardContent className="p-0 h-80">
-                  <div className="relative">
-                    <Image src={product.image} alt={product.title} width={200} height={200} className="h-80 rounded-xl w-full object-cover" />
-                    <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-white rounded-full">
-                      <Heart className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-              <div className="p-4">
-                    <p className="font-semibold text-sm">{product.title}</p>
-                    <p className="text-sm text-gray-600">{product.location}</p>
-                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-thin text-gray-500">per day</span></p>
-                  </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-8">
-        <div className='flex mb-4 align-bottom'>
-            <h2 className="md:text-2xl font-semibold ">Popular near you</h2>
-            <h2 className='text-md ml-auto mr-20 font-semibold hidden sm:flex'>View All <ChevronRight/>  </h2>
-          </div>
-          <div className="flex overflow-x-scroll md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {products.map((product, index) => (
-              <div key={index} className='flex flex-col min-w-[50%]'>
-              <Card key={index}>
-                <CardContent className="p-0 h-80">
-                  <div className="relative">
-                    <Image src={product.image} alt={product.title} width={200} height={200} className="h-80 rounded-xl w-full object-cover" />
-                    <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-white rounded-full">
-                      <Heart className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-              <div className="p-4">
-                    <p className="font-semibold text-sm">{product.title}</p>
-                    <p className="text-sm text-gray-600">{product.location}</p>
-                    <p className="text-sm font-bold mt-2">{product.price} <span className="font-thin text-gray-500">per day</span></p>
-                  </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <div className='pt-14'>
+            <ProductCardsContainer title={"Top rated experiences"}/>
+        </div>
+        <ProductCardsContainer title={"Top picks to explore"} />
+        <ProductCardsContainer title={"Popular near me"} />
 
         <section className="mb-8 md:hidden">
           <div className="bg-[#EDEDFC] rounded-xl p-4 flex flex-col items-start">
