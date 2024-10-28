@@ -81,11 +81,11 @@ export default function MarketplaceLayout() {
       <main className="container mx-auto px-4 py-8">
         <section className="mb-8 overflow-x-auto sm:grid">
         <div className='flex flex-col'>
-        <Image src={Category} alt='Category'/>
+        {/* <Image src={Category} alt='Category'/> */}
           <div className="flex space-x-4 md:grid md:grid-cols-4 md:gap-4 lg:grid-cols-12">
             {categories.map((category, index) => (
               <div key={index} className="flex flex-col items-center flex-shrink-0">
-                {/* <Image src={category.icon} width={100} height={100} alt="Icon" /> */}
+                <Image src={category.icon} width={100} height={100} alt="Icon" />
                 <span className="text-xs font-semibold text-center">{category.name}</span>
               </div>
             ))}

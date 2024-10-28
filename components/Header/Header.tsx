@@ -17,7 +17,7 @@ export default function Header() {
                     <Input
                         type="search"
                         placeholder="Search on"
-                        className="pl-10 pr-12 py-2 w-full rounded-md border border-gray-300 placeholder-gray-400"
+                        className="pl-10 pr-12 py-2 w-full rounded-md border border-gray-300 placeholder-gray-400 text-center"
                     />
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                     <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
