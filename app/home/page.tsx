@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Heart, ChevronRight } from 'lucide-react';
 import Category from "@/public/assets/category.png";
+import Rocket from "@/public/assets/rocket.png"
 
 const categories = [
   { name: 'Automobiles', icon: '' },
@@ -62,7 +63,7 @@ function ProductCardsContainer({title}: {title: string}){
 
 export default function MarketplaceLayout() {
   return (
-    <div className="min-h-screen bg-white sm:pl-14 px-7">
+    <div className="min-h-screen bg-white sm:pl-14 px-2">
 
       <main className="container mx-auto px-4 py-8">
         <section className="mb-8 overflow-x-auto sm:grid">
@@ -84,16 +85,18 @@ export default function MarketplaceLayout() {
         <ProductCardsContainer title={"Top picks to explore"} />
         <ProductCardsContainer title={"Popular near me"} />
 
-        <section className="mb-8 md:hidden">
-          <div className="bg-[#EDEDFC] rounded-xl p-4 flex flex-col items-start">
-            <div className="flex items-center mb-2">
-              <svg className="w-5 h-5 text-black mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" />
-              </svg>
-              <h3 className="font-semibold text-black">Don&apos;t see what you need?</h3>
+        <section className="mb-8 md:hidden w-full">
+          <div className="bg-[#EDEDFC] rounded-xl p-4 flex flex-col items-start w-full">
+            <div className='flex flex-row'>
+              <Button className='bg-white p-0.5 px-1 w-1/6'>
+                <Image src={Rocket} alt="Rocket" className='h-6 w-7'/>
+              </Button>
+            <div className='flex flex-col'>
+            <h3 className="font-semibold text-black ml-2">Don&apos;t see what you need?</h3>
+            <p className="text-sm  text-gray-800 mb-4 ml-2">Request a product & we&apos;ll do our best to get it on Renit for you!</p>
             </div>
-            <p className="text-sm text-black mb-4">Request a product & we&apos;ll do our best to get it on Renit for you!</p>
-            <Button className="w-full bg-[#645AE8] hover:[#645AE8] text-white">Unavailability form</Button>
+            </div>
+            <Button className="w-full bg-[#645AE8] hover:[#645AE8] text-white">Unavailability form <ChevronRight/></Button>
           </div>
         </section>
       </main>
