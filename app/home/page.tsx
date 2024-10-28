@@ -27,11 +27,11 @@ const products = [
   { title: 'Hero Xpulse 200T', location: 'Goregaon, Mumbai', price: '₹1990', image: 'https://www.giva.co/cdn/shop/products/ML_queens_necklace_img1.jpg?v=1632552308&width=1445' },
 ]
 
-function ProductCardsContainer({title}){
+function ProductCardsContainer({title}: {title: string}){
     return (
         <section className="mb-8">
           <div className='flex mb-4 align-bottom'>
-            <h2 className="md:text-2xl font-semibold ">{title}</h2>
+            <h2 className="text-2xl font-semibold ">{title}</h2>
             <h2 className='text-md ml-auto mr-20 font-semibold hidden sm:flex'>View All <ChevronRight/>  </h2>
           </div>
           <div className="flex overflow-x-scroll md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
